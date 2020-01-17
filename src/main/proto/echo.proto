@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.echo";
+option java_outer_classname = "EchoProto";
+option objc_class_prefix = "ECHO";
+
+package echo;
+import "google/api/annotations.proto";
+
+message EchoMessage {
+    string value = 1;
+}
+
+service EchoService {
+    rpc Echo (EchoMessage) returns (EchoMessage) {
+        option (google.api.http) = {
+      post: "/v1/echo"
+      body: "*"
+    };
+    }
+}
