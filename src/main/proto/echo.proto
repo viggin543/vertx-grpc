@@ -6,7 +6,7 @@ option java_outer_classname = "EchoProto";
 option objc_class_prefix = "ECHO";
 
 package echo;
-import "google/api/annotations.proto";
+//import "google/api/annotations.proto";
 
 message EchoMessage {
     string value = 1;
@@ -14,9 +14,9 @@ message EchoMessage {
 
 service EchoService {
     rpc Echo (EchoMessage) returns (EchoMessage) {
-        option (google.api.http) = {
-      post: "/v1/echo"
-      body: "*"
-    };
+//        option (google.api.http) = {
+//      post: "/v1/echo"
+//      body: "*"
+//    };
     }
 }

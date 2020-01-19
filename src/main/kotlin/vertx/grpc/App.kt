@@ -20,14 +20,11 @@ class App : CoroutineVerticle() {
                 .forPort(vertx, 8080)
                 .addService(object : EmptyPingPongServiceGrpc.EmptyPingPongServiceVertxImplBase() {
                     override fun emptyCall(request: EmptyProtos.Empty, response: Future<EmptyProtos.Empty>) {
-                        response.complete(EmptyProtos.Empty.newBuilder().build())
+                        response.complete(
+                                EmptyProtos.Empty.newBuilder().build()
+                        )
                     }
-                }).addService(object: EchoServiceGrpc.EchoServiceVertxImplBase(){
-                    override fun echo(request: EchoMessage, response: Future<EchoMessage>) {
-                        response.complete(EchoMessage.newBuilder().build())
-                    }
-                })
-                .build().start { ar: AsyncResult<Void> ->
+                }).build().start { ar: AsyncResult<Void> ->
             if (ar.failed()) {
                 ar.cause().printStackTrace()
             } else {
